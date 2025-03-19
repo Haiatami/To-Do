@@ -1,5 +1,5 @@
 package com.hoanghai.todo.enums;
 
-public enum TaskPrioritys {
+public enum TaskPriority {
     LOW, MEDIUM, HIGH
 }
