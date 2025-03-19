@@ -10,14 +10,14 @@ import java.time.LocalDate;
 @Data
 public class CreateTaskRequest {
 
-    @NotBlank(message = "Title cannot be blank")
+    @NotBlank(message = "Tiêu đề không được bỏ trống")
     private String title;
 
     private String description;
 
-    @NotNull(message = "Due date cannot be null")
+    @NotNull(message = "Thời hạn không được bỏ trống")
     private LocalDate dueDate;
 
-    @NotNull(message = "Priority cannot be null")
+    @NotNull(message = "Mức độ quan trọng không được bỏ trống")
     private TaskPriority priority;
 }

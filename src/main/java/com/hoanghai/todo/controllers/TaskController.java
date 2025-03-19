@@ -28,7 +28,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskDto> createTask(@Valid @RequestBody CreateTaskRequest createTaskRequest) {
-        Task task = taskService.createTask(createTaskRequest);
+        Task task = taskService.createTask(createTaskRequest);// tạo các task
         return new ResponseEntity<>(convertToDto(task), HttpStatus.CREATED);
     }
 
@@ -40,13 +40,13 @@ public class TaskController {
             @RequestParam(required = false) List<TaskStatus> statuses,
             @RequestParam(required = false) List<TaskPriority> priorities,
             Pageable pageable) {
-        Page<Task> tasks = taskService.getAllTasks(title, description, dueDate, statuses, priorities, pageable);
+        Page<Task> tasks = taskService.getAllTasks(title, description, dueDate, statuses, priorities, pageable);// lấy tất cả các task và dựa vào tiêu đề, thời hạn, trạng thái, độ quan trọng và trang
         return ResponseEntity.ok(tasks.map(this::convertToDto));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TaskDto> getTaskById(@PathVariable Long id) {
-        return taskService.getTaskById(id)
+        return taskService.getTaskById(id) // lấy thông tin task dựa vào id
                 .map(this::convertToDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -54,7 +54,7 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TaskDto> updateTask(@PathVariable Long id, @Valid @RequestBody UpdateTaskRequest updateTaskRequest) {
-        return taskService.updateTask(id, updateTaskRequest)
+        return taskService.updateTask(id, updateTaskRequest) // thay đổi thông tin và trạng thái của task
                 .map(this::convertToDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -62,7 +62,7 @@ public class TaskController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
-        taskService.deleteTask(id);
+        taskService.deleteTask(id); // thực hiện xóa task
         return ResponseEntity.noContent().build();
     }
 

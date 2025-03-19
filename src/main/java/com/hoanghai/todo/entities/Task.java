@@ -20,28 +20,28 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Table(name = "tasks")
-public class Task implements Serializable { // Implement the Serializable interface
+public class Task implements Serializable { // Triển khai giao diện Serializable
 
-    private static final long serialVersionUID = 1L; // Recommended for versioning
+    private static final long serialVersionUID = 1L; // Được đề xuất cho phiên bản
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Title cannot be blank")
+    @NotBlank(message = "Tiêu đề không được bỏ trống")
     private String title;
 
     private String description;
 
-    @NotNull(message = "Due date cannot be null")
+    @NotNull(message = "Thời hạn không được bỏ trống")
     private LocalDate dueDate;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus status = TaskStatus.TODO;
+    private TaskStatus status = TaskStatus.TODO; // TODO, IN_PROGRESS, COMPLETED, BLOCKED
 
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "Priority cannot be null")
-    private TaskPriority priority = TaskPriority.MEDIUM;
+    @NotNull(message = "Mức độ quan trọng không được bỏ trống")
+    private TaskPriority priority = TaskPriority.MEDIUM; // LOW, MEDIUM, HIGH
 
     @CreationTimestamp
     private LocalDateTime createdAt;

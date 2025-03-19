@@ -8,10 +8,13 @@ import java.time.LocalDate;
 
 @Data
 public class UpdateTaskRequest {
-
     private String title;
+
     private String description;
+
     private LocalDate dueDate;
+
     private TaskStatus status;
+
     private TaskPriority priority;
 }

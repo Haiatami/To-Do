@@ -11,9 +11,14 @@ import java.time.LocalDate;
 @Builder
 public class TaskDto {
     private Long id;
+
     private String title;
+
     private String description;
+
     private LocalDate dueDate;
+
     private TaskStatus status;
+
     private TaskPriority priority;
 }

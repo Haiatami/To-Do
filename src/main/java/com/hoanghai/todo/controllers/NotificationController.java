@@ -17,9 +17,9 @@ public class NotificationController {
     @Autowired
     private NotificationService notificationService;
 
-    @GetMapping("/trigger-task-check")
+    @GetMapping("/trigger-task-check") // gửi thông báo khi task gần đến hạn hoặc hết hạn
     public ResponseEntity<String> triggerTaskNotificationCheck() {
-        notificationService.checkUpcomingAndOverdueTasks();
+        notificationService.checkUpcomingAndOverdueTasks(); // kiểm tra thời hạn của task
         return new ResponseEntity<>("Task notification check triggered successfully.", HttpStatus.OK);
     }
 }

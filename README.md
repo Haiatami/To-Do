@@ -2,6 +2,8 @@
 
 Xây dựng Backend API cho ứng dụng danh sách việc cần làm bằng Spring Boot, MySQL, Redis, Docker.
 
+## Cơ sở dữ liệu
+![img_3.png](img_3.png)
 ## Hướng dẫn Thiết lập
 
 ### Điều kiện Tiên quyết

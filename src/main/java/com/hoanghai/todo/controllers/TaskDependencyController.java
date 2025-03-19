@@ -22,7 +22,7 @@ public class TaskDependencyController {
     @PostMapping("/{dependencyId}")
     public ResponseEntity<String> addDependency(@PathVariable Long taskId, @PathVariable Long dependencyId) {
         try {
-            taskDependencyService.addDependency(taskId, dependencyId);
+            taskDependencyService.addDependency(taskId, dependencyId);// tạo task phụ thuộc vào task chính dựa vào id
             return ResponseEntity.status(HttpStatus.CREATED).body("Dependency added successfully.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -31,19 +31,19 @@ public class TaskDependencyController {
 
     @DeleteMapping("/{dependencyId}")
     public ResponseEntity<String> removeDependency(@PathVariable Long taskId, @PathVariable Long dependencyId) {
-        taskDependencyService.removeDependency(taskId, dependencyId);
+        taskDependencyService.removeDependency(taskId, dependencyId);// xóa tack phụ thuộc task chính dựa vào id
         return ResponseEntity.ok("Dependency removed successfully.");
     }
 
-    @GetMapping
-    public ResponseEntity<List<TaskDto>> getDependencies(@PathVariable Long taskId) {
-        List<Task> dependencies = taskDependencyService.getDirectDependencies(taskId);
-        return ResponseEntity.ok(dependencies.stream().map(this::convertToDto).collect(Collectors.toList()));
-    }
+//    @GetMapping
+//    public ResponseEntity<List<TaskDto>> getDependencies(@PathVariable Long taskId) {
+//        List<Task> dependencies = taskDependencyService.getDirectDependencies(taskId);
+//        return ResponseEntity.ok(dependencies.stream().map(this::convertToDto).collect(Collectors.toList()));
+//    }
 
     @GetMapping("/all")
     public ResponseEntity<List<TaskDto>> getAllDependencies(@PathVariable Long taskId) {
-        List<Task> allDependencies = taskDependencyService.getAllDependencies(taskId);
+        List<Task> allDependencies = taskDependencyService.getAllDependencies(taskId); // lấy tất cả các task phụ thuộc vào task chính
         return ResponseEntity.ok(allDependencies.stream().map(this::convertToDto).collect(Collectors.toList()));
     }
 
